@@ -1,5 +1,7 @@
-body {
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .root {
@@ -7,11 +9,11 @@ body {
   background: url(./images//background.jpg);
   background-size: cover;
   background-repeat: no-repeat;
-  display: flex;
-  align-items: center;
 }
 
-.ship {
+.player {
+  top: 0;
+  position: absolute;
   transform: rotate(90deg);
   height: 150px;
 }
