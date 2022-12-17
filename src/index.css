@@ -15,3 +15,7 @@ body {
   transform: rotate(90deg);
   height: 150px;
 }
+
+.black-hole {
+  height: 800px;
+}
