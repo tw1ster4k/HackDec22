@@ -3,9 +3,12 @@ const fire = document.querySelector('.fire');
 const root = document.querySelector('.root');
 const enemy = document.querySelector('.enemy');
 const gameOver = document.createElement('div');
+const blast = document.createElement('div');
 
 gameOver.textContent = 'GAME OVER';
 gameOver.classList.add('game-over');
+
+blast.classList.add('blast');
 
 const playerHeight = player.clientHeight;
 const playerWidth = player.clientWidth;
@@ -103,13 +106,17 @@ const renderEnemy = setInterval(() => {
     if (
       player.offsetLeft + playerWidth >= enemyLeft &&
       player.offsetLeft <= enemyLeft + enemy.clientWidth &&
-      player.offsetTop + playerHeight - 20 >= enemyTop &&
-      player.offsetTop <= enemyTop + enemyHeight - 20
+      player.offsetTop + playerHeight >= enemyTop &&
+      player.offsetTop <= enemyTop + enemyHeight
     ) {
-      root.replaceChildren();
       clearInterval(moveEnemy);
       clearInterval(renderEnemy);
-      root.appendChild(gameOver);
+      player.src = './images/blast.png';
+      enemyClone.remove();
+      setTimeout(() => {
+        root.replaceChildren();
+        root.appendChild(gameOver);
+      }, 1000);
     }
     if (enemyClone.offsetLeft > 0) {
       goLeft -= 1;
@@ -127,5 +134,5 @@ const renderEnemy = setInterval(() => {
     ) {
       enemyClone.remove();
     }
-  }, 50);
-}, 5000);
+  }, 1);
+}, 1000);
