@@ -5,12 +5,18 @@ const dbConnection = require("./src/db/connection");
 
 require("dotenv").config();
 dbConnection();
-//routes
-const apiRouter = require("./src/routes/api");
 
 app.use(express.static(path.resolve("public")));
 
+//routes
+
+const apiRouter = require("./src/routes/api");
+const indexRouter = require("./src/routes/index");
+const gameRouter = require("./src/routes/game");
+
+app.use("/", indexRouter);
 app.use("/api", apiRouter);
+app.use("/game", gameRouter);
 
 app.listen(process.env.PORT || 3000)
     .on("error", (error) => {

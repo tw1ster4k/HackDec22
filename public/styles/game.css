@@ -1,0 +1,98 @@
+* {
+    outline: none;
+}
+
+body {
+    margin: 0;
+}
+
+.root {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background: url(../images/bg.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+.start-layer {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: #001e4f;
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    z-index: 3;
+    transition: 0.5s;
+}
+
+.game-over {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    height: 0;
+    width: 100vw;
+    background-color: #001e4f;
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    z-index: 3;
+    transition: 0.5s;
+    color: #FFF;
+}
+
+.player {
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    background: url("../images/ricknmorty.webp") no-repeat;
+    background-size: cover;
+    transition: 90ms;
+}
+
+.enemy {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    background: url("../images/player.png") no-repeat;
+    background-size: cover;
+    rotate: 270deg;
+    transition: 90ms;
+}
+
+.bullet {
+    position: absolute;
+    background: #00eeff;
+    background-size: cover;
+    width: 15px;
+    height: 5px;
+    transition: 150ms;
+    border-radius: 10px;
+    -webkit-box-shadow: -10px 0px 15px 5px rgba(0, 255, 255, 1);
+    -moz-box-shadow: -10px 0px 15px 5px rgba(0, 255, 255, 1);
+    box-shadow: -10px 0px 15px 5px rgba(0, 255, 255, 1);
+}
+
+#start-btn, #replay-btn{
+    border: none;
+    width: 100px;
+    height: 50px;
+    font-size: 30px;
+    border-radius: 10px;
+    color: white;
+    background-color: #058a00;
+    cursor: pointer;
+}
