@@ -18,6 +18,10 @@
   height: 150px;
 }
 
-.black-hole {
-  height: 800px;
+.fire {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: red;
+  visibility: hidden;
 }
