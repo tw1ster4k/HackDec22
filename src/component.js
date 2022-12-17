@@ -5,6 +5,7 @@ const playerHeight = player.clientHeight;
 const playerWidth = player.clientWidth;
 const fireHeight = fire.clientHeight;
 const windowHeight = document.documentElement.clientHeight;
+const windowWidth = document.documentElement.clientWidth;
 const maxHeight = windowHeight - playerHeight;
 
 window.addEventListener('keydown', (event) => {
@@ -17,6 +18,15 @@ window.addEventListener('keydown', (event) => {
       fire.style.visibility = 'visible';
       fire.style.top = x + 'px';
       fire.style.left = y + 'px';
+      setInterval(() => {
+        let plusLeft = fire.offsetLeft;
+        if (plusLeft < windowWidth - 20) {
+          plusLeft += 1;
+          fire.style.left = plusLeft + 'px';
+        } else {
+          fire.style.display = 'none';
+        }
+      }, 1);
       break;
     case 'ArrowUp':
       if (player.offsetTop >= 0) {
