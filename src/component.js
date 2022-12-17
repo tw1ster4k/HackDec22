@@ -3,12 +3,9 @@ const fire = document.querySelector('.fire');
 const root = document.querySelector('.root');
 const enemy = document.querySelector('.enemy');
 const gameOver = document.createElement('div');
-const blast = document.createElement('div');
 
 gameOver.textContent = 'GAME OVER';
 gameOver.classList.add('game-over');
-
-blast.classList.add('blast');
 
 const playerHeight = player.clientHeight;
 const playerWidth = player.clientWidth;
@@ -31,20 +28,23 @@ const getRandomHeight = (elHeight) => {
   return Math.floor(Math.random() * (windowHeight - elHeight - 50) + 50);
 };
 
-window.addEventListener('keydown', (event) => {
+const onKeyDown = (event) => {
   switch (event.key) {
     case ' ':
       const fireClone = fire.cloneNode(true);
       const fireX = player.offsetTop + playerHeight / 2 - fireHeight / 2;
       const fireY = player.offsetLeft + playerWidth;
+      console.log(player.offsetLeft);
+      console.log(playerWidth);
+      // console.log(fireY);
+      fireClone.style.top = fireX + 'px';
+      fireClone.style.left = fireY + 'px';
       root.appendChild(fireClone);
       // player.offsetTop - количество пикселей от верха экрана до верхней границы игрока
       // offsetLeft - количество пикселей от левого края экрана до элемента
       // playerHeight / 2 - середина высоты игрока
       // fireHeight / 2 - середина элемента огня
       fireClone.style.visibility = 'visible';
-      fireClone.style.top = fireX + 'px';
-      fireClone.style.left = fireY + 'px';
       setInterval(() => {
         let goRight = fireClone.offsetLeft;
         if (goRight < windowWidth - 110) {
@@ -92,7 +92,9 @@ window.addEventListener('keydown', (event) => {
     default:
       break;
   }
-});
+};
+
+window.addEventListener('keydown', onKeyDown);
 
 const renderEnemy = setInterval(() => {
   const enemyClone = enemy.cloneNode(true);
@@ -109,14 +111,17 @@ const renderEnemy = setInterval(() => {
       player.offsetTop + playerHeight >= enemyTop &&
       player.offsetTop <= enemyTop + enemyHeight
     ) {
+      const fireList = Array.from(document.querySelectorAll('.fire'));
+      player.src = './images/blast.png';
       clearInterval(moveEnemy);
       clearInterval(renderEnemy);
-      player.src = './images/blast.png';
       enemyClone.remove();
+      fireList.map((fire) => fire.remove());
+      window.removeEventListener('keydown', onKeyDown);
       setTimeout(() => {
         root.replaceChildren();
         root.appendChild(gameOver);
-      }, 1000);
+      }, 1500);
     }
     if (enemyClone.offsetLeft > 0) {
       goLeft -= 1;
