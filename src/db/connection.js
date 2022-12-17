@@ -2,9 +2,13 @@ const mongoose = require("mongoose");
 
 require("dotenv").config();
 
-const dbPath = process.env.DB_PATH;
-const dbName = process.env.DB_NAME;
+const { DB_NAME, DB_URL } = process.env;
+
+mongoose.set("strictQuery", true);
 
 module.exports = () => {
-    console.log(dbPath);
+    mongoose.connect(`${DB_URL}${DB_NAME}`, (err) => {
+        if (err) throw err;
+        console.log(`Connection to ${DB_NAME} success`);
+    });
 };
