@@ -1,33 +1,60 @@
 const player = document.querySelector('.player');
 const fire = document.querySelector('.fire');
+const root = document.querySelector('.root');
+const enemy = document.querySelector('.enemy');
 
 const playerHeight = player.clientHeight;
 const playerWidth = player.clientWidth;
-const fireHeight = fire.clientHeight;
+
 const windowHeight = document.documentElement.clientHeight;
 const windowWidth = document.documentElement.clientWidth;
+
 const maxHeight = windowHeight - playerHeight;
+const fireHeight = fire.clientHeight;
+const enemyHeight = enemy.clientHeight;
+
+
+
+var EnemTop;
+var FireTop;
+var EnemLeft;
+var FireLeft;
+
 
 window.addEventListener('keydown', (event) => {
   switch (event.key) {
     case ' ':
+      
       // eslint-disable-next-line no-case-declarations
-      const x = player.offsetTop + playerHeight / 2 - fireHeight / 2;
+      const fireClone = fire.cloneNode(true);
       // eslint-disable-next-line no-case-declarations
-      const y = playerWidth;
-      fire.style.visibility = 'visible';
-      fire.style.top = x + 'px';
-      fire.style.left = y + 'px';
-        setInterval(() => {
-          let plusLeft = fire.offsetLeft;
-          if (plusLeft < windowWidth - 20) {
-            plusLeft += 1;
-            fire.style.left = plusLeft + 'px';
-          } else {
-            fire.remove();
-          }
-        }, 1);
-       
+      const fireX = player.offsetTop + playerHeight / 2 - fireHeight / 2;
+      // eslint-disable-next-line no-case-declarations
+      const fireY = playerWidth;
+      root.appendChild(fireClone);
+
+      // player.offsetTop - количество пикселей от верха экрана до верхней границы игрока
+      // playerHeight / 2 - середина высоты игрока
+      // fireHeight / 2 - середина элемента огня
+      fireClone.style.visibility = 'visible';
+      fireClone.style.top = fireX + 'px';
+      fireClone.style.left = fireY + 'px';
+      setInterval(() => {
+        let goRight = fireClone.offsetLeft;
+        if (goRight < windowWidth - 20) {
+          goRight += 20;
+          fireClone.style.left = goRight + 'px';
+          FireLeft = fireClone.offsetLeft;
+          FireTop = fireClone.offsetTop;
+        } else {
+          fireClone.remove();
+        }
+         if ((FireLeft + fireHeight >= EnemLeft-10) && (FireLeft <= EnemLeft + enemyHeight+10) && ((FireTop + fireHeight >= EnemTop-10 ) && (FireTop <= EnemTop + enemyHeight + 10))  ){
+
+          fireClone.remove()
+        } 
+      
+      }, 100);
       break;
     case 'ArrowUp':
       if (player.offsetTop >= 0) {
@@ -45,3 +72,36 @@ window.addEventListener('keydown', (event) => {
       break;
   }
 });
+
+
+
+const getRandomHeight = (elHeight) => {
+  return Math.floor(Math.random() * (windowHeight - elHeight - 50) - 50);
+};
+enemy.style.top = getRandomHeight(enemyHeight) + 'px';
+
+setInterval(() => {
+  const enemyClone = enemy.cloneNode(true);
+  enemyClone.style.visibility = 'visible';
+  enemyClone.style.top = getRandomHeight(enemyHeight) + 'px';
+  root.appendChild(enemyClone);
+  
+  setInterval(() => {
+    let goLeft = enemyClone.offsetLeft;
+    if (enemyClone.offsetLeft > 0) {
+      goLeft -= 1;
+      enemyClone.style.left = goLeft + 'px';
+      EnemLeft = enemyClone.offsetLeft;
+      EnemTop = enemyClone.offsetTop;
+    } else {
+      enemyClone.remove();
+    }
+    if ((FireLeft + fireHeight >= EnemLeft-10) && (FireLeft <= EnemLeft + enemyHeight+10) && ((FireTop + fireHeight >= EnemTop-10 ) && (FireTop <= EnemTop + enemyHeight + 10)) ){
+      enemyClone.remove()
+      console.log("Попал!")
+    } 
+  
+  }, 1);
+}, 1000);
+
+
