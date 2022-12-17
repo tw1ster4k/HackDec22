@@ -33,3 +33,8 @@
   width: 150px;
   height: 100px;
 }
+
+.game-over {
+  font-size: 100px;
+  color: #fff;
+}

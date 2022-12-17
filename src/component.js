@@ -2,6 +2,10 @@ const player = document.querySelector('.player');
 const fire = document.querySelector('.fire');
 const root = document.querySelector('.root');
 const enemy = document.querySelector('.enemy');
+const gameOver = document.createElement('div');
+
+gameOver.textContent = 'GAME OVER';
+gameOver.classList.add('game-over');
 
 const playerHeight = player.clientHeight;
 const playerWidth = player.clientWidth;
@@ -18,6 +22,7 @@ var enemyTop;
 var fireTop;
 var enemyLeft;
 var fireLeft;
+var playerTop;
 
 const getRandomHeight = (elHeight) => {
   return Math.floor(Math.random() * (windowHeight - elHeight - 50) + 50);
@@ -28,7 +33,7 @@ window.addEventListener('keydown', (event) => {
     case ' ':
       const fireClone = fire.cloneNode(true);
       const fireX = player.offsetTop + playerHeight / 2 - fireHeight / 2;
-      const fireY = playerWidth;
+      const fireY = player.offsetLeft + playerWidth;
       root.appendChild(fireClone);
       // player.offsetTop - количество пикселей от верха экрана до верхней границы игрока
       // offsetLeft - количество пикселей от левого края экрана до элемента
@@ -69,20 +74,43 @@ window.addEventListener('keydown', (event) => {
         player.style.top = goDown + 5 + 'px';
       }
       break;
+    case 'ArrowLeft':
+      if (player.offsetLeft > 0) {
+        const goLeft = player.offsetLeft;
+        player.style.left = goLeft - 5 + 'px';
+      }
+      break;
+    case 'ArrowRight':
+      if (player.offsetLeft < windowWidth - 50) {
+        const goRight = player.offsetLeft;
+        player.style.left = goRight + 5 + 'px';
+      }
+      break;
     default:
       break;
   }
 });
 
-setInterval(() => {
+const renderEnemy = setInterval(() => {
   const enemyClone = enemy.cloneNode(true);
   enemyClone.style.visibility = 'visible';
   enemyClone.style.top = getRandomHeight(enemyHeight) + 'px';
-  console.log(enemyClone.style.top);
   root.appendChild(enemyClone);
 
-  setInterval(() => {
+  const moveEnemy = setInterval(() => {
+    playerTop = player.offsetTop;
     let goLeft = enemyClone.offsetLeft;
+    if (
+      player.offsetLeft + playerWidth >= enemyLeft &&
+      player.offsetLeft <= enemyLeft + enemy.clientWidth &&
+      player.offsetTop + playerHeight - 20 >= enemyTop &&
+      player.offsetTop <= enemyTop + enemyHeight - 20
+    ) {
+      root.replaceChildren();
+      clearInterval(moveEnemy);
+      clearInterval(renderEnemy);
+      root.appendChild(gameOver);
+    }
     if (enemyClone.offsetLeft > 0) {
       goLeft -= 1;
       enemyClone.style.left = goLeft + 'px';
@@ -98,7 +126,6 @@ setInterval(() => {
       fireTop <= enemyTop + enemyHeight + 10
     ) {
       enemyClone.remove();
-      console.log('Попал!');
     }
-  }, 1);
-}, 1000);
+  }, 50);
+}, 5000);
