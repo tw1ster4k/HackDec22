@@ -13,18 +13,18 @@ const maxHeight = windowHeight - playerHeight;
 const fireHeight = fire.clientHeight;
 const enemyHeight = enemy.clientHeight;
 
-
-
 var EnemTop;
 var FireTop;
 var EnemLeft;
 var FireLeft;
 
+const getRandomHeight = (elHeight) => {
+  return Math.floor(Math.random() * (windowHeight - elHeight - 50) + 50);
+};
 
 window.addEventListener('keydown', (event) => {
   switch (event.key) {
     case ' ':
-      
       // eslint-disable-next-line no-case-declarations
       const fireClone = fire.cloneNode(true);
       // eslint-disable-next-line no-case-declarations
@@ -49,11 +49,14 @@ window.addEventListener('keydown', (event) => {
         } else {
           fireClone.remove();
         }
-         if ((FireLeft + fireHeight >= EnemLeft-10) && (FireLeft <= EnemLeft + enemyHeight+10) && ((FireTop + fireHeight >= EnemTop-10 ) && (FireTop <= EnemTop + enemyHeight + 10))  ){
-
-          fireClone.remove()
-        } 
-      
+        if (
+          FireLeft + fireHeight >= EnemLeft - 10 &&
+          FireLeft <= EnemLeft + enemyHeight + 10 &&
+          FireTop + fireHeight >= EnemTop - 10 &&
+          FireTop <= EnemTop + enemyHeight + 10
+        ) {
+          fireClone.remove();
+        }
       }, 100);
       break;
     case 'ArrowUp':
@@ -73,19 +76,13 @@ window.addEventListener('keydown', (event) => {
   }
 });
 
-
-
-const getRandomHeight = (elHeight) => {
-  return Math.floor(Math.random() * (windowHeight - elHeight - 50) - 50);
-};
-enemy.style.top = getRandomHeight(enemyHeight) + 'px';
-
 setInterval(() => {
   const enemyClone = enemy.cloneNode(true);
   enemyClone.style.visibility = 'visible';
   enemyClone.style.top = getRandomHeight(enemyHeight) + 'px';
+  console.log(enemyClone.style.top);
   root.appendChild(enemyClone);
-  
+
   setInterval(() => {
     let goLeft = enemyClone.offsetLeft;
     if (enemyClone.offsetLeft > 0) {
@@ -96,12 +93,14 @@ setInterval(() => {
     } else {
       enemyClone.remove();
     }
-    if ((FireLeft + fireHeight >= EnemLeft-10) && (FireLeft <= EnemLeft + enemyHeight+10) && ((FireTop + fireHeight >= EnemTop-10 ) && (FireTop <= EnemTop + enemyHeight + 10)) ){
-      enemyClone.remove()
-      console.log("Попал!")
-    } 
-  
+    if (
+      FireLeft + fireHeight >= EnemLeft - 10 &&
+      FireLeft <= EnemLeft + enemyHeight + 10 &&
+      FireTop + fireHeight >= EnemTop - 10 &&
+      FireTop <= EnemTop + enemyHeight + 10
+    ) {
+      enemyClone.remove();
+      console.log('Попал!');
+    }
   }, 1);
-}, 1000);
-
-
+}, 2000);
