@@ -1,55 +1,80 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,600;0,700;1,100;1,600;1,700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,600;0,700;1,100;1,600;1,700&display=swap");
 
-body{
-    background-image:url('./img/фф.gif');
-    font-family: 'IBM Plex Mono', monospace;
-    background-size: cover;
-    background-repeat: repeat-y;
-    height:100%;
-    width:100%;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.main{
+body {
+    background-image: url("./img/фф.gif");
+    font-family: "IBM Plex Mono", monospace;
+    background-size: cover;
+    background-repeat: repeat-y;
+    height: 100%;
+    width: 100%;
+}
+
+.main {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    position: relative;
 }
 
-.card{
-    height: 300px;
-    width: 200px;
+.logo__img {
+    position: absolute;
+    bottom: 2px;
+    left: 2px;
+    height: 100px;
+}
+
+.logo__text {
+    position: absolute;
+    bottom: 8px;
+    left: 106px;
+    font-size: 26px;
+    line-height: 28px;
+    font-weight: bold;
+    color: rgb(69, 32, 171);
+}
+
+.card {
     display: flex;
     flex-direction: column;
-    justify-content: end;
     align-items: center;
     box-shadow: 0 18px 200px -60px black;
     border-radius: 50px;
-    width: 650px;
+    width: 800px;
     position: relative;
     backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
     border: 2px solid #ffffff40;
-    padding: 3rem 5rem;
-    color: azure;
+    padding: 20px 30px 30px 50px;
+    text-align: center;
+    color: rgb(247 232 254);
+    font-size: 19px;
+    line-height: 24px;
 }
 
-.card__text{
+.card__text {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    align-items: center;
 }
 
-.card__img{
-    height: 260px;
-    width: 270px;
+.card__img {
+    height: 350px;
 }
 
-.button{
-    width: 100px;
-    height: 50px;
+.button {
+    width: 130px;
+    height: 53px;
     background-color: rgb(255, 242, 0);
     border: none;
-    border-radius: 30%;
-    font-size: 18px;
+    border-radius: 16px;
+    font-size: 23px;
     font-weight: bold;
     color: rgb(184, 15, 227);
 }
