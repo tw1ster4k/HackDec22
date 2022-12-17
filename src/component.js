@@ -10,7 +10,9 @@ const maxHeight = windowHeight - playerHeight;
 window.addEventListener('keydown', (event) => {
   switch (event.key) {
     case ' ':
+      // eslint-disable-next-line no-case-declarations
       const x = player.offsetTop + playerHeight / 2 - fireHeight / 2;
+      // eslint-disable-next-line no-case-declarations
       const y = playerWidth;
       fire.style.visibility = 'visible';
       fire.style.top = x + 'px';
