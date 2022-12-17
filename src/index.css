@@ -1,10 +1,17 @@
-body{
-    margin: 0;
+body {
+  margin: 0;
 }
 
-.root{
-    height: 100vh;
-    background: url(./images//background.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
+.root {
+  height: 100vh;
+  background: url(./images//background.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+}
+
+.ship {
+  transform: rotate(90deg);
+  height: 150px;
 }
