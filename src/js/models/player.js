@@ -11,6 +11,7 @@ module.exports = class Player {
         this.username = username;
         this.element = element;
         this.element.className = "player";
+        this.element.classList.add("vibrate");
         this.element.style.left = this.position.x + "px";
         this.element.style.top = this.position.y + "px";
     }
