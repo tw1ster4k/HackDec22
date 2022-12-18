@@ -4,6 +4,7 @@
 
 * {
     outline: none;
+    font-style: normal;
 }
 
 body {
@@ -161,9 +162,6 @@ body {
     width: 100px;
     height: 100px;
     position: absolute;
-    background: url("../images/player.png") no-repeat;
-    background-size: cover;
-    rotate: 270deg;
     transition: 90ms;
 }
 
@@ -183,7 +181,6 @@ body {
 #start-btn {
     border: none;
     cursor: pointer;
-    width: 130px;
     height: 53px;
     background-color: rgb(255, 242, 0);
     border-radius: 16px;
@@ -265,6 +262,7 @@ body {
     height: 100px;
 }
 
+
 .vibrate {
     -webkit-animation: vibrate-2 0.3s linear infinite both;
     animation: vibrate-2 0.3s linear infinite both;
@@ -322,3 +320,33 @@ body {
         transform: translate(0);
     }
 }
+
+.score {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 40px;
+    color: aqua;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+}
+
+#score-counter {
+    font-weight: bolder;
+    font-size: 45px;
+    font-style: normal;
+}
+
+
+
+.e1 {background: url("../images/enemies/1.png") no-repeat; background-size: contain;}
+.e2 {background: url("../images/enemies/2.png") no-repeat; background-size: contain;}
+.e3 {background: url("../images/enemies/3.png") no-repeat; background-size: contain;}
+.e4 {background: url("../images/enemies/4.png") no-repeat; background-size: contain;}
+.e5 {background: url("../images/enemies/5.png") no-repeat; background-size: contain;}
+.e6 {background: url("../images/enemies/6.png") no-repeat; background-size: contain;}
+.e7 {background: url("../images/enemies/7.png") no-repeat; background-size: contain;}
+.e8 {background: url("../images/enemies/8.png") no-repeat; background-size: contain;}
+.e9 {background: url("../images/enemies/9.png") no-repeat; background-size: contain;}
+.e10 {background: url("../images/enemies/10.png") no-repeat; background-size: contain;}
+

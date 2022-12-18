@@ -5,20 +5,23 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="styles/game.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400&display=swap" rel="stylesheet">
         <title>Space Carnage</title>
     </head>
     <body>
         <div class="game-over">
+
             <h1 class="game-over__title">GAME OVER</h1>
             <div class="score">
                 <div class="score__box">
                        <img src="./img/pngegg.png" alt="ss" class="score__img">
-            <h4 class="score__title">ТВОЙ СЧЕТ: 0!</h4> 
+            <h4 class="score__title">ТВОЙ СЧЕТ: <i id="final-score">0</i>! </h4> 
                 </div>
             <button id="replay-btn">Попробовать еще раз</button>
             </div>
             <p class="info__text">Команда разработчиков</p> 
             <div class="info">    
+
                 <img src="./img/salavat.png" alt="sticker" class="sticker">
                 <img src="./img/mari.png" alt="sticker" class="sticker">
                 <img src="./img/nastya.png" alt="sticker" class="sticker">
@@ -65,8 +68,10 @@
             </div>
         </div>
         <div class="root">
-            <!-- <input placeholder="username" />
-            <button>Play</button> -->
+
+            <div class="score">
+                <span>Ваши очки: <i id="score-counter">0</i></span>
+            </div>
         </div>
         <script src="js/bundle.js"></script>
     </body>
