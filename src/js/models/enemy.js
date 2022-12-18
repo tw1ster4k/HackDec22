@@ -1,3 +1,6 @@
+
+
+
 module.exports = class Enemy {
     type = 1;
     width = 50;
@@ -9,6 +12,7 @@ module.exports = class Enemy {
         y: 0,
     };
 
+
     constructor(type, position, element, speed = 20, width = 50, height = 50) {
         this.type = type;
         this.position = position;
@@ -16,6 +20,7 @@ module.exports = class Enemy {
         this.height = height;
         this.width = width;
         this.speed = speed;
+        this.score = 0;
     }
 
     kill() {

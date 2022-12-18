@@ -8,14 +8,30 @@ const startLayer = document.querySelector(".start-layer");
 const gameOverLayer = document.querySelector(".game-over");
 const startBtn = document.querySelector("#start-btn");
 const replayBtn = document.querySelector("#replay-btn");
+const score = document.createElement("h4")
+/* const input = document.getElementsByClassName('inputUser')
+*/
+const H1over = document.querySelector('.over')
 
 const step = 30;
 
 let player = null;
 let game = null;
 
+const gameOverCb = () => {
+    gameOverLayer.style.height = "100vh";
+    game = null;
+    player = null;
+    root.innerHTML = "";
+    score.innerText = `Твой счёт ${Enemy.score}!`
+    console.log(Enemy.score)
+    H1over.insertAdjacentElement("afterend", score)
+};
+
+
+
 const newGame = () => {
-    player = new Player("Username", document.createElement("div"));
+    player = new Player("Player", document.createElement("div"));
     game = new Game(root, Enemy, Bullet, player, gameOverCb);
     game.start();
     startLayer.style.height = "0";
@@ -33,30 +49,26 @@ replayBtn.addEventListener("click", (event) => {
     gameOverLayer.style.height = "0";
 });
 
+
+
 document.addEventListener("keydown", (event) => {
-    if (game.isOver) return;
+/*    if (game.isOver) return; */
     switch (event.key) {
         case "ArrowUp":
             player.setPosition(0, -step);
             break;
-        case "ArrowDown":
-            player.setPosition(0, step);
-            break;
-        case "ArrowRight":
-            player.setPosition(step, 0);
-            break;
-        case "ArrowLeft":
+            case "ArrowDown":
+                player.setPosition(0, step);
+                break;
+                case "ArrowRight":
+                    player.setPosition(step, 0);
+                    break;
+                    case "ArrowLeft":
             player.setPosition(-step, 0);
             break;
-
-        case " ":
-            game.attack(player.position.x + 150, player.position.y + 100);
-    }
-});
-
-const gameOverCb = () => {
-    gameOverLayer.style.height = "100vh";
-    game = null;
-    player = null;
-    root.innerHTML = "";
-};
+            
+            case " ":
+                game.attack(player.position.x + 150, player.position.y + 100);
+            }
+        });
+        

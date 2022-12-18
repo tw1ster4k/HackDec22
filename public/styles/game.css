@@ -93,7 +93,7 @@ body {
 #replay-btn {
     border: none;
     cursor: pointer;
-    width: 130px;
+    width: 200px;
     height: 53px;
     background-color: rgb(255, 242, 0);
     border-radius: 16px;
@@ -160,4 +160,14 @@ body {
 
 .sticker {
     height: 100px;
+}
+
+.inputUser{
+    height: 35px;
+    width: 150px;
+    border-radius: 16px;
+    text-align: center;
+    background-color: #001e4f;
+    border-color: black;
+    color: yellow;
 }

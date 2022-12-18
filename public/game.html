@@ -5,12 +5,13 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="styles/game.css" />
+        <script defer src="js/bundle.js"></script>
         <title>Space Carnage</title>
     </head>
     <body>
         <div class="game-over">
-            <h1>Game Over</h1>
-            <h4>Твой счет: 0!</h4>
+            <h1 class="over">Game Over</h1>
+             <!-- <h4 id="check"></h4>  -->
             <button id="replay-btn">Попробовать еще раз</button>
             <div>Команда разработчиков
                 <img src="./img/salavat.png" alt="sticker" class="sticker">
@@ -37,6 +38,7 @@
                         <img src="./img/logo.png" alt="logo" class="card__img" />
                     </div>
                     <div>
+                        <!-- <input placeholder="NickName" class="inputUser" /> -->
                         <button id="start-btn">Start!</button>
                     </div>
                 </div>
@@ -47,9 +49,8 @@
             </div>
         </div>
         <div class="root">
-            <input placeholder="username" />
-            <button>Play</button>
+            <!-- <input placeholder="username" />
+            <button>Play</button> -->
         </div>
-        <script src="js/bundle.js"></script>
     </body>
 </html>

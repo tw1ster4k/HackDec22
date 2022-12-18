@@ -122,7 +122,13 @@ module.exports = class Game {
             });
         });
     }
-
+    
+    gameOver() {
+        this.isOver = true;
+        this.isStarted = false;
+        this.gameOverCb();
+    }
+    
     checkIntersections() {
         this.enemies.forEach((enemie) => {
             if (
@@ -152,9 +158,4 @@ module.exports = class Game {
         });
     }
 
-    gameOver() {
-        this.isOver = true;
-        this.isStarted = false;
-        this.gameOverCb();
-    }
 };

@@ -1,6 +1,5 @@
 module.exports = class Player {
     username = "Player";
-    score = 0;
     position = {
         x: 100,
         y: 500,
@@ -23,4 +22,7 @@ module.exports = class Player {
             (this.position.y += y) &&
             (this.element.style.top = this.position.y + "px");
     }
+
+    
+
 };
