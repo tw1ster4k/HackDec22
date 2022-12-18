@@ -1,3 +1,5 @@
+const startGameMusic = new Audio("./img/theme.mp3");
+
 module.exports = class Game {
     score = 0;
     player = null;
@@ -28,6 +30,7 @@ module.exports = class Game {
     }
 
     start() {
+        startGameMusic.play();
         const gameInterval = setInterval(() => {
             if (this.isOver) return clearInterval(gameInterval);
 
@@ -79,6 +82,8 @@ module.exports = class Game {
     }
 
     attack(posX, posY) {
+        const shoot = new Audio("./img/shoot.mp3");
+        shoot.play();
         const newBullet = new this.BulletModel(
             { x: posX, y: posY },
             document.createElement("div")
@@ -161,15 +166,27 @@ module.exports = class Game {
                     this.player.position.y + 100
                 )
             ) {
+                this.player.element.classList.remove("vibrate");
+                this.player.element.style.backgroundImage =
+                    "url(./img/blast.png)";
+                this.player.element.style.backgroundSize = "contain";
                 this.gameOver();
             }
         });
     }
 
     gameOver() {
+        startGameMusic.pause();
+        startGameMusic.currentTime = 0;
+        const gameOverMusic = new Audio("./img/game-over.mp3");
+        gameOverMusic.play();
         this.isOver = true;
         this.isStarted = false;
-        this.gameOverCb();
-        console.log("GAME OVER");
+
+        setTimeout(() => {
+            this.gameOverCb();
+        }, 2000);
+
+
     }
 };

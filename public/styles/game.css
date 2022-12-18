@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,600;0,700;1,100;1,600;1,700&display=swap");
 
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
 * {
     outline: none;
     font-style: normal;
@@ -49,13 +51,102 @@ body {
     left: 0;
     height: 0;
     width: 100vw;
-    background-color: #001e4f;
+    background-image: url(../img/gg.png);
     background-size: cover;
     background-repeat: no-repeat;
     overflow: hidden;
     z-index: 3;
     transition: 0.5s;
     color: #fff;
+}
+
+.game-over__title {
+    background: linear-gradient(45deg, #d5135a, #f05924);
+    box-shadow: 0 4px 30px rgba(223, 45, 70, 0.35);
+    font-family: "Press Start 2P", cursive;
+    font-size: 60px;
+    line-height: 24px;
+    -webkit-animation: backgroundZoomAnimate 20s forwards;
+    animation: backgroundZoomAnimate 20s forwards;
+    margin-bottom: 50px;
+}
+
+.score {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 50px;
+    width: 600px;
+}
+
+.score__box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.score__title {
+    font-family: "Press Start 2P", cursive;
+    font-size: 17px;
+    line-height: 64px;
+}
+
+.score__img {
+    height: 300px;
+}
+
+@-webkit-keyframes backgroundZoomAnimate {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.3);
+    }
+}
+
+@keyframes backgroundZoomAnimate {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.3);
+    }
+}
+
+.info {
+    display: flex;
+}
+
+.info__text {
+    font-family: "Press Start 2P", cursive;
+    font-size: 15px;
+    line-height: 64px;
+    color: #ff1900;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flower {
+    height: 55px;
+}
+
+.github {
+    background: linear-gradient(45deg, #333333, #626b73);
+    box-shadow: 0 4px 30px rgba(63, 65, 67, 0.6);
+    width: 55px;
+    height: 55px;
+    margin: 15px;
+    border-radius: 40%;
+    color: white;
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
 }
 
 .player {
@@ -87,8 +178,7 @@ body {
     box-shadow: -10px 0px 15px 5px rgba(0, 255, 255, 1);
 }
 
-#start-btn,
-#replay-btn {
+#start-btn {
     border: none;
     cursor: pointer;
     height: 53px;
@@ -97,6 +187,19 @@ body {
     font-size: 23px;
     font-weight: bold;
     color: rgb(184, 15, 227);
+}
+
+#replay-btn {
+    border: none;
+    cursor: pointer;
+    width: 200px;
+    height: 53px;
+    background: linear-gradient(45deg, #d5135a, #f05924);
+    box-shadow: 0 4px 30px rgba(223, 45, 70, 0.35);
+    border-radius: 16px;
+    font-size: 23px;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
 }
 
 /* стили из файла маши */
@@ -159,6 +262,65 @@ body {
     height: 100px;
 }
 
+
+.vibrate {
+    -webkit-animation: vibrate-2 0.3s linear infinite both;
+    animation: vibrate-2 0.3s linear infinite both;
+}
+
+@-webkit-keyframes vibrate {
+    0% {
+        -webkit-transform: translate(0);
+        transform: translate(0);
+    }
+    20% {
+        -webkit-transform: translate(2px, -2px);
+        transform: translate(2px, -2px);
+    }
+    40% {
+        -webkit-transform: translate(2px, 2px);
+        transform: translate(2px, 2px);
+    }
+    60% {
+        -webkit-transform: translate(-2px, 2px);
+        transform: translate(-2px, 2px);
+    }
+    80% {
+        -webkit-transform: translate(-2px, -2px);
+        transform: translate(-2px, -2px);
+    }
+    100% {
+        -webkit-transform: translate(0);
+        transform: translate(0);
+    }
+}
+@keyframes vibrate-2 {
+    0% {
+        -webkit-transform: translate(0);
+        transform: translate(0);
+    }
+    20% {
+        -webkit-transform: translate(2px, -2px);
+        transform: translate(2px, -2px);
+    }
+    40% {
+        -webkit-transform: translate(2px, 2px);
+        transform: translate(2px, 2px);
+    }
+    60% {
+        -webkit-transform: translate(-2px, 2px);
+        transform: translate(-2px, 2px);
+    }
+    80% {
+        -webkit-transform: translate(-2px, -2px);
+        transform: translate(-2px, -2px);
+    }
+    100% {
+        -webkit-transform: translate(0);
+        transform: translate(0);
+    }
+}
+
 .score {
     position: absolute;
     top: 10px;
@@ -187,3 +349,4 @@ body {
 .e8 {background: url("../images/enemies/8.png") no-repeat; background-size: contain;}
 .e9 {background: url("../images/enemies/9.png") no-repeat; background-size: contain;}
 .e10 {background: url("../images/enemies/10.png") no-repeat; background-size: contain;}
+
