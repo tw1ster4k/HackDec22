@@ -29,7 +29,7 @@ module.exports = class Game {
 
     start() {
         const gameInterval = setInterval(() => {
-            this.isOver && clearInterval(gameInterval);
+            if (this.isOver) return clearInterval(gameInterval);
 
             this.bullets.forEach((el) => {
                 el.move();
@@ -50,8 +50,9 @@ module.exports = class Game {
         }, 100);
 
         const enemiesInterval = setInterval(() => {
-            this.isOver && clearInterval(enemiesInterval);
-            this.createRandomEnemy();
+            this.isOver
+                ? clearInterval(enemiesInterval)
+                : this.createRandomEnemy();
         }, 1000);
     }
 
@@ -169,5 +170,6 @@ module.exports = class Game {
         this.isOver = true;
         this.isStarted = false;
         this.gameOverCb();
+        console.log("GAME OVER");
     }
 };
