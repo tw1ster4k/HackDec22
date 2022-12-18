@@ -1,4 +1,5 @@
 module.exports = class Game {
+    score = 0;
     player = null;
     rootDiv = null;
     enemies = [];
@@ -8,13 +9,22 @@ module.exports = class Game {
     BulletModel = null;
     isStarted = false;
     gameOverCb = null;
+    counterElement;
 
-    constructor(rootDiv, EnemyModel, BulletModel, player, gameOverCb) {
+    constructor(
+        rootDiv,
+        EnemyModel,
+        BulletModel,
+        player,
+        gameOverCb,
+        counterElement
+    ) {
         this.player = player;
         this.rootDiv = rootDiv;
         this.EnemyModel = EnemyModel;
         this.BulletModel = BulletModel;
         this.gameOverCb = gameOverCb;
+        this.counterElement = counterElement;
     }
 
     start() {
@@ -23,7 +33,7 @@ module.exports = class Game {
 
             this.bullets.forEach((el) => {
                 el.move();
-                el.position.x > screen.width && el.clear();
+                el.position.x >= screen.width && el.clear();
             });
             this.enemies.forEach((el) => {
                 el.move();
@@ -47,15 +57,16 @@ module.exports = class Game {
 
     createRandomEnemy() {
         const newEnemy = new this.EnemyModel(
-            1,
+            this.randomizer(1, 10),
             {
                 x: screen.width,
                 y: this.randomizer(0, screen.height),
             },
             document.createElement("div"),
+            this.randomizer(5, 25),
             this.randomizer(5, 25)
         );
-        newEnemy.element.className = "enemy";
+        newEnemy.element.className = `enemy e${newEnemy.type}`;
         newEnemy.element.style.top = newEnemy.position.y + "px";
         newEnemy.element.style.left = newEnemy.position.x + "px";
         this.rootDiv.insertAdjacentElement("afterbegin", newEnemy.element);
@@ -118,6 +129,8 @@ module.exports = class Game {
                     this.enemies = this.enemies.filter((el) => el !== enemie);
                     bullet.clear();
                     this.bullets = this.bullets.filter((el) => el !== bullet);
+                    this.score += enemie.reward;
+                    this.counterElement.innerText = this.score;
                 }
             });
         });

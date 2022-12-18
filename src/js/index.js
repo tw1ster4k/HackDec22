@@ -8,6 +8,8 @@ const startLayer = document.querySelector(".start-layer");
 const gameOverLayer = document.querySelector(".game-over");
 const startBtn = document.querySelector("#start-btn");
 const replayBtn = document.querySelector("#replay-btn");
+const scoreCounter = document.querySelector("#score-counter");
+const finalScore = document.querySelector("#final-score");
 
 const step = 30;
 
@@ -16,7 +18,7 @@ let game = null;
 
 const newGame = () => {
     player = new Player("Username", document.createElement("div"));
-    game = new Game(root, Enemy, Bullet, player, gameOverCb);
+    game = new Game(root, Enemy, Bullet, player, gameOverCb, scoreCounter);
     game.start();
     startLayer.style.height = "0";
     root.insertAdjacentElement("afterbegin", player.element);
@@ -56,7 +58,9 @@ document.addEventListener("keydown", (event) => {
 
 const gameOverCb = () => {
     gameOverLayer.style.height = "100vh";
+    finalScore.innerText = game.score;
     game = null;
     player = null;
     root.innerHTML = "";
+    scoreCounter.innerText = "0";
 };
