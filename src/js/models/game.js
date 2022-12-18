@@ -1,9 +1,4 @@
 const startGameMusic = new Audio("./img/theme.mp3");
-let firstClick = true;
-document.onclick = function () {
-    if (firstClick == true) startGameMusic.play();
-    firstClick = false;
-};
 
 module.exports = class Game {
     player = null;
@@ -25,6 +20,7 @@ module.exports = class Game {
     }
 
     start() {
+        startGameMusic.play();
         const gameInterval = setInterval(() => {
             this.isOver && clearInterval(gameInterval);
 
@@ -167,6 +163,7 @@ module.exports = class Game {
 
     gameOver() {
         startGameMusic.pause();
+        startGameMusic.currentTime = 0;
         const gameOverMusic = new Audio("./img/game-over.mp3");
         gameOverMusic.play();
         this.isOver = true;
