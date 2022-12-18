@@ -154,7 +154,7 @@ module.exports = class Game {
             ) {
                 this.player.element.classList.remove("vibrate");
                 this.player.element.style.backgroundImage =
-                    "url(../img/blast.png)";
+                    "url(./img/blast.png)";
                 this.player.element.style.backgroundSize = "contain";
                 this.gameOver();
             }

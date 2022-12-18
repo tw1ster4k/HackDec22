@@ -67,7 +67,7 @@ body {
     line-height: 24px;
     -webkit-animation: backgroundZoomAnimate 20s forwards;
     animation: backgroundZoomAnimate 20s forwards;
-    padding-bottom: 50px;
+    margin-bottom: 50px;
 }
 
 .score {
@@ -116,6 +116,23 @@ body {
 
 .info {
     display: flex;
+}
+
+.info__text {
+    font-family: "Press Start 2P", cursive;
+    font-size: 15px;
+    line-height: 64px;
+    color: #ff1900;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flower {
+    height: 55px;
 }
 
 .github {
