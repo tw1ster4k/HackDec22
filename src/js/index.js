@@ -52,7 +52,13 @@ document.addEventListener("keydown", (event) => {
             break;
 
         case " ":
-            game.attack(player.position.x + 150, player.position.y + 100);
+            if (game.score >= 100) {
+                game.attack(player.position.x + 150, player.position.y + 75);
+                game.attack(player.position.x + 150, player.position.y + 100);
+                game.attack(player.position.x + 150, player.position.y + 125);
+            } else {
+                game.attack(player.position.x + 150, player.position.y + 100);
+            }
     }
 });
 

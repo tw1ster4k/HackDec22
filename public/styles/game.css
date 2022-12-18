@@ -71,7 +71,7 @@ body {
     margin-bottom: 50px;
 }
 
-.score {
+.player__score {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -85,6 +85,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-bottom: 30px;
 }
 
 .score__title {
@@ -262,7 +263,6 @@ body {
     height: 100px;
 }
 
-
 .vibrate {
     -webkit-animation: vibrate-2 0.3s linear infinite both;
     animation: vibrate-2 0.3s linear infinite both;
@@ -328,7 +328,7 @@ body {
     font-size: 40px;
     color: aqua;
     font-weight: bold;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
 }
 
 #score-counter {
@@ -337,16 +337,43 @@ body {
     font-style: normal;
 }
 
-
-
-.e1 {background: url("../images/enemies/1.png") no-repeat; background-size: contain;}
-.e2 {background: url("../images/enemies/2.png") no-repeat; background-size: contain;}
-.e3 {background: url("../images/enemies/3.png") no-repeat; background-size: contain;}
-.e4 {background: url("../images/enemies/4.png") no-repeat; background-size: contain;}
-.e5 {background: url("../images/enemies/5.png") no-repeat; background-size: contain;}
-.e6 {background: url("../images/enemies/6.png") no-repeat; background-size: contain;}
-.e7 {background: url("../images/enemies/7.png") no-repeat; background-size: contain;}
-.e8 {background: url("../images/enemies/8.png") no-repeat; background-size: contain;}
-.e9 {background: url("../images/enemies/9.png") no-repeat; background-size: contain;}
-.e10 {background: url("../images/enemies/10.png") no-repeat; background-size: contain;}
-
+.e1 {
+    background: url("../images/enemies/1.png") no-repeat;
+    background-size: contain;
+}
+.e2 {
+    background: url("../images/enemies/2.png") no-repeat;
+    background-size: contain;
+}
+.e3 {
+    background: url("../images/enemies/3.png") no-repeat;
+    background-size: contain;
+}
+.e4 {
+    background: url("../images/enemies/4.png") no-repeat;
+    background-size: contain;
+}
+.e5 {
+    background: url("../images/enemies/5.png") no-repeat;
+    background-size: contain;
+}
+.e6 {
+    background: url("../images/enemies/6.png") no-repeat;
+    background-size: contain;
+}
+.e7 {
+    background: url("../images/enemies/7.png") no-repeat;
+    background-size: contain;
+}
+.e8 {
+    background: url("../images/enemies/8.png") no-repeat;
+    background-size: contain;
+}
+.e9 {
+    background: url("../images/enemies/9.png") no-repeat;
+    background-size: contain;
+}
+.e10 {
+    background: url("../images/enemies/10.png") no-repeat;
+    background-size: contain;
+}
