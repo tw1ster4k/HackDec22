@@ -1,3 +1,10 @@
+const startGameMusic = new Audio("./img/theme.mp3");
+let firstClick = true;
+document.onclick = function () {
+    if (firstClick == true) startGameMusic.play();
+    firstClick = false;
+};
+
 module.exports = class Game {
     player = null;
     rootDiv = null;
@@ -67,6 +74,8 @@ module.exports = class Game {
     }
 
     attack(posX, posY) {
+        const shoot = new Audio("./img/shoot.mp3");
+        shoot.play();
         const newBullet = new this.BulletModel(
             { x: posX, y: posY },
             document.createElement("div")
@@ -147,14 +156,23 @@ module.exports = class Game {
                     this.player.position.y + 100
                 )
             ) {
+                this.player.element.classList.remove("vibrate");
+                this.player.element.style.backgroundImage =
+                    "url(../img/blast.png)";
+                this.player.element.style.backgroundSize = "contain";
                 this.gameOver();
             }
         });
     }
 
     gameOver() {
+        startGameMusic.pause();
+        const gameOverMusic = new Audio("./img/game-over.mp3");
+        gameOverMusic.play();
         this.isOver = true;
         this.isStarted = false;
-        this.gameOverCb();
+        setTimeout(() => {
+            this.gameOverCb();
+        }, 2000);
     }
 };
